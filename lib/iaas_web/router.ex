@@ -17,6 +17,7 @@ defmodule IaasWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/:text/:size", PageController, :image
   end
 
   # Other scopes may use custom stacks.
