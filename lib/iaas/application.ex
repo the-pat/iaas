@@ -9,9 +9,13 @@ defmodule Iaas.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      IaasWeb.Endpoint
+      IaasWeb.Endpoint,
       # Starts a worker by calling: Iaas.Worker.start_link(arg)
       # {Iaas.Worker, arg},
+      %{
+        id: Cachex,
+        start: {Cachex, :start_link, [:my_cache, [limit: 100]]}
+      }
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
