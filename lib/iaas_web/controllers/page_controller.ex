@@ -5,7 +5,8 @@ defmodule IaasWeb.PageController do
     render(conn, "index.html")
   end
 
-  def image(conn, %{"text" => text, "size" => unparsed_size}) do
+  def image(conn, %{"text" => encoded_text, "size" => unparsed_size}) do
+    text = URI.decode(encoded_text)
     {size, _} = Integer.parse(unparsed_size)
 
     {_, binary_image} = Cachex.fetch(:my_cache, {text, size}, fn(_) ->
@@ -13,7 +14,7 @@ defmodule IaasWeb.PageController do
     end)
 
     conn
-    |> put_resp_content_type("image/jpeg")
+    |> put_resp_content_type("image/png")
     |> send_resp(:ok, binary_image)
   end
 end

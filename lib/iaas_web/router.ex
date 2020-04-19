@@ -17,11 +17,6 @@ defmodule IaasWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/:text/:size", PageController, :image
+    get "/:text/:size/identicon.png", PageController, :image
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", IaasWeb do
-  #   pipe_through :api
-  # end
 end
