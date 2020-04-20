@@ -4,7 +4,7 @@ defmodule IaasWeb.PageController do
   def index(conn, _params) do
     random_text = Iaas.Random.text()
 
-    render(conn, "index.html", %{random_text: random_text})
+    render(conn, "index.html", %{text: random_text, size: 5})
   end
 
   def image(conn, %{"text" => encoded_text, "size" => unparsed_size}) do
