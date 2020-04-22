@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <!-- Begin Vue.js CDN links. -->
 
-    <!-- Environment variable for DEBUG needs to go here, where `true` is used. -->
-    <%= if true do %> 
+    <%= if Mix.env() == :dev do %>
       <!-- Development version of Vue.js. -->
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <% else %>
