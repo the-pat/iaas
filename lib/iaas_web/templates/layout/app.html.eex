@@ -16,9 +16,8 @@
       <!-- Production version of Vue.js. -->
       <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
     <% end %>
-    <script src="https://unpkg.com/vuex@3.2.0/dist/vuex.js"></script>
     <!-- End Vue.js CDN links. -->
-    
+
     <%= csrf_meta_tag() %>
   </head>
   <body>
