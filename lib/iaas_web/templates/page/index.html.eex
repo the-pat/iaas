@@ -1,3 +1,10 @@
 <section class="phx-hero">
   <div id="app"></div>
+  <script>
+    const text = `<%= @text %>`;
+    const size = <%= @size %>;
+    
+    window[Symbol.for('text')] = text;
+    window[Symbol.for('size')] = size;
+  </script>
 </section>
