@@ -16,3 +16,16 @@ import "phoenix_html";
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
 import "./image";
+
+import Vue from "vue";
+import Message from "./components/Message.vue";
+
+new Vue({
+  el: "#app",
+  render: (h) =>
+    h(Message, {
+      props: {
+        text: pageData.text,
+      },
+    }),
+});

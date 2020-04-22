@@ -19,3 +19,10 @@
     </select>
   </div>
 </section>
+<div id="app"></div>
+<script type="text/javascript">
+  const pageData = (() => ({
+    text: '<%= @text %>',
+    size: <%= @size %>,
+  }))();
+</script>
