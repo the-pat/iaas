@@ -1,7 +1,12 @@
 <template>
   <div>
     <span class="iaas__header-text">Identicons as a service</span>
-    <Identicon :src="src" :text="text" :size="size" />
+    <Identicon
+      :src="src"
+      :text="text"
+      :size="size"
+      :has-identicon="hasIdenticon"
+    />
     <Form :text.sync="text" :size.sync="size" />
   </div>
 </template>
@@ -45,6 +50,12 @@ export default {
     },
     text() {
       this.setSrc();
+    },
+  },
+  computed: {
+    hasIdenticon() {
+      const [_, encodedText] = this.src.split("/");
+      return !!encodedText.length;
     },
   },
 };

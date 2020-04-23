@@ -1,11 +1,11 @@
 <template>
   <div>
     <img
-      id="identicon"
       :src="src"
       :alt="alt"
       :title="text"
       class="card mw-300"
+      v-if="hasIdenticon"
     />
     <figcaption id="caption">
       A {{ size }}x{{ size }} identicon from
@@ -20,6 +20,7 @@ export default {
     size: Number,
     text: String,
     src: String,
+    hasIdenticon: Boolean,
   },
   computed: {
     alt() {
