@@ -1,7 +1,5 @@
-import { components } from "./components";
-const { MainLayout } = components;
+import MainLayout from "./components/MainLayout.vue";
 new Vue({
   el: `#app`,
-  components,
   render: (r) => r(MainLayout),
 });

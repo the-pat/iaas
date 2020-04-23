@@ -1,22 +1,23 @@
-export const MainLayout = Vue.component("MainLayout", {
-  template: `
-    <div>
-      <h1>Identicons as a service</h1>
-      <Identicon
-        :src="src"
-        :text="text"
-        :size="size"
-        />
-      <Form
-        :text.sync="text"
-        :size.sync="size"
-        />
-    </div>
-  `,
+<template>
+  <div>
+    <h1>Identicons as a service</h1>
+    <Identicon :src="src" :text="text" :size="size" />
+    <Form :text.sync="text" :size.sync="size" />
+  </div>
+</template>
+<script>
+import Form from "./Form.vue";
+import Identicon from "./Identicon.vue";
+export default {
+  name: "MainLayout",
+  components: {
+    Form,
+    Identicon
+  },
   data: () => ({
     text: "",
     size: 0,
-    src: "",
+    src: ""
   }),
   created() {
     const size = window[Symbol.for("size")];
@@ -36,7 +37,7 @@ export const MainLayout = Vue.component("MainLayout", {
         () => (this.src = `/${encodedText}/${this.size}/identicon.png`),
         300
       );
-    },
+    }
   },
   watch: {
     size() {
@@ -44,6 +45,7 @@ export const MainLayout = Vue.component("MainLayout", {
     },
     text() {
       this.setSrc();
-    },
-  },
-});
+    }
+  }
+};
+</script>
