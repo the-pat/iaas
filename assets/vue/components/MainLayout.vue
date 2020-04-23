@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Identicons as a service</h1>
+    <span class="iaas__header-text">Identicons as a service</span>
     <Identicon :src="src" :text="text" :size="size" />
     <Form :text.sync="text" :size.sync="size" />
   </div>
@@ -12,12 +12,12 @@ export default {
   name: "MainLayout",
   components: {
     Form,
-    Identicon
+    Identicon,
   },
   data: () => ({
     text: "",
     size: 0,
-    src: ""
+    src: "",
   }),
   created() {
     const size = window[Symbol.for("size")];
@@ -37,7 +37,7 @@ export default {
         () => (this.src = `/${encodedText}/${this.size}/identicon.png`),
         300
       );
-    }
+    },
   },
   watch: {
     size() {
@@ -45,7 +45,20 @@ export default {
     },
     text() {
       this.setSrc();
-    }
-  }
+    },
+  },
 };
 </script>
+
+<style lang="scss">
+.iaas__header-text {
+  font-size: 3.6rem;
+  line-height: 1.25;
+  font-weight: 300;
+  letter-spacing: -0.1rem;
+  margin-bottom: 2rem;
+  margin-top: 0;
+  font-size: 4.6rem;
+  line-height: 1.2;
+}
+</style>
