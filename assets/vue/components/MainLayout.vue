@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="iaas__header-text">Identicons as a service</span>
-    <Identicon :src="src" :text="text" :size="size" />
+    <Identicon :src="src" :size="size" />
     <Form :text.sync="text" :size.sync="size" />
   </div>
 </template>
