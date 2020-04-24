@@ -1,19 +1,21 @@
 <template>
   <div>
     <span class="iaas__header-text">Identicons as a service</span>
-    <Identicon :src="src" :size="size" />
+    <Identicon :src="src" :size="size" :has-identicon="hasIdenticon" />
     <Form :text.sync="text" :size.sync="size" />
   </div>
 </template>
 <script>
 import Form from "./Form.vue";
 import Identicon from "./Identicon.vue";
+import { DebounceMixin, EncodedTextMixin } from "../mixins";
 export default {
   name: "MainLayout",
   components: {
     Form,
     Identicon,
   },
+  mixins: [DebounceMixin, EncodedTextMixin],
   data: () => ({
     text: "",
     size: 0,
@@ -27,10 +29,6 @@ export default {
     this.text = text;
   },
   methods: {
-    debounce(func, ms) {
-      if (this.timeout) clearTimeout(this.timeout);
-      this.timeout = setTimeout(func, ms);
-    },
     setSrc() {
       const encodedText = encodeURI(this.text);
       this.debounce(
@@ -45,6 +43,11 @@ export default {
     },
     text() {
       this.setSrc();
+    },
+  },
+  computed: {
+    hasIdenticon() {
+      return !!this.encodedText.length;
     },
   },
 };

@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="iaas__identicon">
     <img
-      id="identicon"
       :src="src"
       :alt="alt"
       :title="text"
       class="card mw-300"
+      v-if="hasIdenticon"
     />
     <figcaption id="caption">
       A {{ size }}x{{ size }} identicon from
@@ -14,37 +14,48 @@
   </div>
 </template>
 <script>
+import { EncodedTextMixin } from "../mixins";
 export default {
   name: "Identicon",
+  mixins: [EncodedTextMixin],
   props: {
     size: Number,
     src: String,
+    hasIdenticon: Boolean,
   },
   computed: {
     alt() {
       return `A ${this.size}x${this.size} identicon from '${this.text}'`;
     },
     text() {
-      const [_, encodedText] = this.src.split("/");
-      return decodeURI(encodedText);
+      return decodeURI(this.encodedText);
     },
   },
 };
 </script>
 
 <style lang="scss">
-figcaption {
-  font-size: smaller;
-  margin-bottom: 3rem;
-}
+.iaas__identicon {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 
-.mw-300 {
-  max-width: 300px;
-}
+  img {
+    object-fit: contain;
+  }
+  figcaption {
+    font-size: smaller;
+    margin-bottom: 3rem;
+  }
 
-.card {
-  border-radius: 4px;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  .mw-300 {
+    max-width: 300px;
+  }
+
+  .card {
+    border-radius: 4px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
 }
 </style>
