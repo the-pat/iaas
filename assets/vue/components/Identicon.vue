@@ -14,8 +14,10 @@
   </div>
 </template>
 <script>
+import { EncodedTextMixin } from "../mixins";
 export default {
   name: "Identicon",
+  mixins: [EncodedTextMixin],
   props: {
     size: Number,
     src: String,
@@ -26,8 +28,7 @@ export default {
       return `A ${this.size}x${this.size} identicon from '${this.text}'`;
     },
     text() {
-      const [_, encodedText] = this.src.split("/");
-      return decodeURI(encodedText);
+      return decodeURI(this.encodedText);
     },
   },
 };

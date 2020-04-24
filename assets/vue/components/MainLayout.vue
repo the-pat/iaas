@@ -8,14 +8,14 @@
 <script>
 import Form from "./Form.vue";
 import Identicon from "./Identicon.vue";
-import DebounceMixin from "../mixins/DebounceMixin";
+import { DebounceMixin, EncodedTextMixin } from "../mixins";
 export default {
   name: "MainLayout",
   components: {
     Form,
     Identicon,
   },
-  mixins: [DebounceMixin],
+  mixins: [DebounceMixin, EncodedTextMixin],
   data: () => ({
     text: "",
     size: 0,
@@ -47,8 +47,7 @@ export default {
   },
   computed: {
     hasIdenticon() {
-      const [_, encodedText] = this.src.split("/");
-      return !!encodedText.length;
+      return !!this.encodedText.length;
     },
   },
 };
