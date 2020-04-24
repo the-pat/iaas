@@ -1,21 +1,7 @@
 <section class="phx-hero">
-  <h1>Identicons as a Service</h1>
-  <div class="center">
-    <img id="identicon" src="<%= Routes.page_path(@conn, :image, @text, @size) %>" alt="A <%= @size %>x<%= @size %> identicon from '<%= @text %>'" title="<%= @text %>" class="card mw-300" />
-    <figcaption id="caption">A <%= @size %>x<%= @size %> identicon from <strong><%= @text %></strong></figcaption>
-  </div>
-  <div>
-    <label for="text">Text</label>
-    <input id="text" type="text" value="<%= @text %>">
-    <label for="size">Size</label>
-    <select id="size">
-      <%= for number <- 1..10 do %>
-        <%= if number == @size do %>
-          <option value="<%= number %>" selected="selected"><%= number %></option>
-        <% else %>
-          <option value="<%= number %>"><%= number %></option>
-        <% end %>
-      <% end %>
-    </select>
-  </div>
+  <div id="app"></div>
+  <script> 
+    window[Symbol.for('text')] = `<%= @text %>`;
+    window[Symbol.for('size')] = <%= @size %>;
+  </script>
 </section>
