@@ -8,12 +8,14 @@
 <script>
 import Form from "./Form.vue";
 import Identicon from "./Identicon.vue";
+import DebounceMixin from "../mixins/DebounceMixin";
 export default {
   name: "MainLayout",
   components: {
     Form,
     Identicon,
   },
+  mixins: [DebounceMixin],
   data: () => ({
     text: "",
     size: 0,
@@ -27,10 +29,6 @@ export default {
     this.text = text;
   },
   methods: {
-    debounce(func, ms) {
-      if (this.timeout) clearTimeout(this.timeout);
-      this.timeout = setTimeout(func, ms);
-    },
     setSrc() {
       const encodedText = encodeURI(this.text);
       this.debounce(
