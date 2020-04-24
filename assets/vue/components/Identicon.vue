@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="iaas__identicon">
     <img
       :src="src"
       :alt="alt"
@@ -34,18 +34,27 @@ export default {
 </script>
 
 <style lang="scss">
-figcaption {
-  font-size: smaller;
-  margin-bottom: 3rem;
-}
+.iaas__identicon {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 
-.mw-300 {
-  max-width: 300px;
-}
+  img {
+    object-fit: contain;
+  }
+  figcaption {
+    font-size: smaller;
+    margin-bottom: 3rem;
+  }
 
-.card {
-  border-radius: 4px;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  .mw-300 {
+    max-width: 300px;
+  }
+
+  .card {
+    border-radius: 4px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
 }
 </style>
