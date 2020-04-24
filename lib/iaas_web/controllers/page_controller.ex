@@ -19,4 +19,10 @@ defmodule IaasWeb.PageController do
     |> put_resp_content_type("image/png")
     |> send_resp(:ok, binary_image)
   end
+
+  def random(conn, _params) do
+    random_text = Iaas.Random.text()
+
+    text(conn, random_text)
+  end
 end

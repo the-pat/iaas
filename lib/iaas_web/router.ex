@@ -18,5 +18,6 @@ defmodule IaasWeb.Router do
 
     get "/", PageController, :index
     get "/:text/:size/identicon.png", PageController, :image
+    get "/random", PageController, :random
   end
 end
