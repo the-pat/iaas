@@ -3,6 +3,7 @@
     <div class="iaas__form-field">
       <label for="text">Text</label>
       <input id="text" type="text" v-model="localText" />
+      <RandomBtn @random="localText = $event" />
     </div>
     <div class="iaas__form-field">
       <label for="size">Size</label>
@@ -12,8 +13,12 @@
   </div>
 </template>
 <script>
+import RandomBtn from "./RandomBtn.vue";
 export default {
   name: "Form",
+  components: {
+    RandomBtn,
+  },
   props: {
     size: Number,
     text: String,
