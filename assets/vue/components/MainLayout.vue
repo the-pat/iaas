@@ -1,12 +1,7 @@
 <template>
   <div>
     <span class="iaas__header-text">Identicons as a service</span>
-    <Identicon
-      :src="src"
-      :text="text"
-      :size="size"
-      :has-identicon="hasIdenticon"
-    />
+    <Identicon :src="src" :size="size" :has-identicon="hasIdenticon" />
     <Form :text.sync="text" :size.sync="size" />
   </div>
 </template>

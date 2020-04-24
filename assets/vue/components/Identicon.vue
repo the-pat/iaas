@@ -18,13 +18,16 @@ export default {
   name: "Identicon",
   props: {
     size: Number,
-    text: String,
     src: String,
     hasIdenticon: Boolean,
   },
   computed: {
     alt() {
       return `A ${this.size}x${this.size} identicon from '${this.text}'`;
+    },
+    text() {
+      const [_, encodedText] = this.src.split("/");
+      return decodeURI(encodedText);
     },
   },
 };

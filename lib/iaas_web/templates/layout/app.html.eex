@@ -6,17 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title><%= assigns[:page_title] || "Iaas · Phoenix Framework" %></title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
-    <!-- Begin Vue.js CDN links. -->
-
-    <%= if Mix.env() == :dev do %>
-      <!-- Development version of Vue.js. -->
-      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <% else %>
-      <!-- Production version of Vue.js. -->
-      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
-    <% end %>
-    <!-- End Vue.js CDN links. -->
-
     <%= csrf_meta_tag() %>
   </head>
   <body>
