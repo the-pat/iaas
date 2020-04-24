@@ -4,6 +4,7 @@
 //
 // Import dependencies
 //
+import "babel-polyfill";
 import "phoenix_html";
 
 // Import local files
